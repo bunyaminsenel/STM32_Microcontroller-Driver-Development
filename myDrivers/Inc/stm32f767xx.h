@@ -27,6 +27,29 @@
 #define AHB1_BASE_ADDR			(PERIPH_BASE_ADDR + 0x00020000UL) 	/* AHB1 Bus Domain Base Address     */
 #define AHB2_BASE_ADDR			(PERIPH_BASE_ADDR + 0x10000000UL) 	/* AHB2 Bus Domain Base Address     */
 
+/*
+*  APB1 Peripherals Base Address
+*/
+
+#define TIM2_BASE_ADDR          (APB1_BASE_ADDR + 0x0000UL)         /* TIMER2 Base Address */
+#define TIM3_BASE_ADDR          (APB1_BASE_ADDR + 0x0400UL)         /* TIMER3 Base Address */
+#define TIM4_BASE_ADDR          (APB1_BASE_ADDR + 0x0800UL)         /* TIMER4 Base Address */
+#define TIM5_BASE_ADDR          (APB1_BASE_ADDR + 0x0C00UL)         /* TIMER5 Base Address */
+#define TIM6_BASE_ADDR          (APB1_BASE_ADDR + 0x1000UL)         /* TIMER6 Base Address */
+#define TIM7_BASE_ADDR          (APB1_BASE_ADDR + 0x1400UL)         /* TIMER7 Base Address */
+
+#define SPI2_BASE_ADDR          (APB1_BASE_ADDR + 0x3800UL)         /* SPI2 Base Address */
+#define SPI3_BASE_ADDR          (APB1_BASE_ADDR + 0x3C00UL)         /* SPI3 Base Address */
+
+#define USART2_BASE_ADRR        (APB1_BASE_ADDR + 0x4400UL)         /* USART2 Base Address */
+#define USART3_BASE_ADRR        (APB1_BASE_ADDR + 0x4800UL)         /* USART2 Base Address */
+#define UART4_BASE_ADRR         (APB1_BASE_ADDR + 0x4C00UL)         /* UART4 Base Address  */
+#define UART5_BASE_ADRR         (APB1_BASE_ADDR + 0x5000UL)         /* UART5 Base Address  */ 
+
+#define I2C1_BASE_ADDR          (APB1_BASE_ADDR + 0x5400UL)         /* I2C1 Base Address  */
+#define I2C2_BASE_ADDR          (APB1_BASE_ADDR + 0x5800UL)         /* I2C2 Base Address  */
+#define I2C3_BASE_ADDR          (APB1_BASE_ADDR + 0x5C00UL)         /* I2C3 Base Address  */
+#define I2C4_BASE_ADDR          (APB1_BASE_ADDR + 0x6000UL)         /* I2C4 Base Address  */
 
 
 #endif /* INC_STM32F767XX_H_ */
