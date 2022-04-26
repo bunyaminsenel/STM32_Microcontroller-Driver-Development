@@ -11,7 +11,13 @@
 #include <stdint.h>
 #include <stdio.h>
 
+#include "RCC.h"
+
 #define __IO volatile
+
+#define SET_BITS(REG,BIT) 			( (REG) |= (BIT) )
+#define CLEAR_BITS(REG,BIT)			( (REG) &= ~(BIT) )
+#define READ_BITS(REG,BIT)			( (REG) &  (BIT) )
 
 /*
  * 	Memory Bade Address
@@ -151,5 +157,30 @@ typedef struct{
 #define GPIOE           ( (GPIO_TypeDef_t *)(GPIOE_BASE_ADDR) )
 
 #define RCC				( (RCC_TypeDef_t *)(RCC_BASE_ADDR)    )
+
+/*
+ * BIT Definitions
+ */
+
+#define RCC_AHB1ENR_GPIOAEN_Pos		(0U)								// RCC AHB1ENR register GPIOAEN Bit Position
+#define RCC_AHB1ENR_GPIOAEN_Msk		(0x01 << RCC_AHB1ENR_GPIOAEN_Pos) 	// RCC AHB1ENR register GPIOAEN Bit Mask
+#define	RCC_AHB1_GPIOAEN			RCC_AHB1ENR_GPIOAEN_Msk				// RCC AHB!ENR register GPIOAEN Macro
+
+#define RCC_AHB1ENR_GPIOBEN_Pos		(1U)								// RCC AHB1ENR register GPIOBEN Bit Position
+#define RCC_AHB1ENR_GPIOBEN_Msk		(0x01 << RCC_AHB1ENR_GPIOBEN_Pos) 	// RCC AHB1ENR register GPIOBEN Bit Mask
+#define	RCC_AHB1_GPIOBEN			RCC_AHB1ENR_GPIOBEN_Msk				// RCC AHB!ENR register GPIOBEN Macro
+
+#define RCC_AHB1ENR_GPIOCEN_Pos		(2U)								// RCC AHB1ENR register GPIOCEN Bit Position
+#define RCC_AHB1ENR_GPIOCEN_Msk		(0x01 << RCC_AHB1ENR_GPIOCEN_Pos) 	// RCC AHB1ENR register GPIOCEN Bit Mask
+#define	RCC_AHB1_GPIOCEN			RCC_AHB1ENR_GPIOCEN_Msk				// RCC AHB!ENR register GPIOCEN Macro
+
+#define RCC_AHB1ENR_GPIODEN_Pos		(3U)								// RCC AHB1ENR register GPIODEN Bit Position
+#define RCC_AHB1ENR_GPIODEN_Msk		(0x01 << RCC_AHB1ENR_GPIODEN_Pos) 	// RCC AHB1ENR register GPIODEN Bit Mask
+#define	RCC_AHB1_GPIODEN			RCC_AHB1ENR_GPIODEN_Msk				// RCC AHB!ENR register GPIODEN Macro
+
+#define RCC_AHB1ENR_GPIOEEN_Pos		(4U)								// RCC AHB1ENR register GPIOEEN Bit Position
+#define RCC_AHB1ENR_GPIOEEN_Msk		(0x01 << RCC_AHB1ENR_GPIOEEN_Pos) 	// RCC AHB1ENR register GPIOEEN Bit Mask
+#define	RCC_AHB1_GPIOEEN			RCC_AHB1ENR_GPIOEEN_Msk				// RCC AHB!ENR register GPIOEEN Macro
+
 
 #endif /* INC_STM32F767XX_H_ */
