@@ -8,6 +8,11 @@
 #ifndef INC_STM32F767XX_H_
 #define INC_STM32F767XX_H_
 
+#include <stdint.h>
+#include <stdio.h>
+
+#define __IO volatile
+
 /*
  * 	Memory Bade Address
  */
@@ -62,7 +67,7 @@
 #define USART6_BASE_ADDR        (APB2_BASE_ADDR + 0x1400UL)         /* USART6 Base Address */
 
 #define SPI1_BASE_ADDR          (APB2_BASE_ADDR + 0x3000UL)         /* SPI1 Base Address   */    
-#define SPI2_BASE_ADDR          (APB2_BASE_ADDR + 0x3400UL)         /* SPI2 Base Address   */
+#define SPI4_BASE_ADDR          (APB2_BASE_ADDR + 0x3400UL)         /* SPI2 Base Address   */
 
 #define SYSCFG_BASE_ADRR        (APB2_BASE_ADDR + 0x3800UL)         /* SYSCFG Base Address */
 #define EXTI_BASE_ADDR          (APB2_BASE_ADDR + 0x3C00UL)         /* EXTI Base Address   */
@@ -78,5 +83,73 @@
 #define GPIOE_BASE_ADDR         (AHB1_BASE_ADDR + 0x1000UL)          /* GPIOE Base Address  */
 
 #define RCC_BASE_ADDR           (AHB1_BASE_ADDR + 0x3800UL)           /* RCC Base Address  */
+
+/*
+*   Peripherals Structure Definitions
+*/
+
+typedef struct 
+{
+	__IO    uint32_t MODER;			/* <!GPIO port mode register 				Address Offset = 0x0000 >*/
+	__IO    uint32_t OTYPER;		/* <!GPIO port output type register 		Address Offset = 0x0004 >*/
+	__IO    uint32_t OSPEEDR;		/* <!GPIO port output speed register 		Address Offset = 0x0008 >*/
+	__IO    uint32_t PUPDR;			/* <!GPIO port pull-up/pull-down register 	Address Offset = 0x000C	>*/
+	__IO    uint32_t IDR;			/* <!GPIO port input data register 			Address Offset = 0x0010 >*/
+	__IO    uint32_t ODR;			/* <!GPIO port output data register 		Address Offset = 0x0014 >*/
+	__IO    uint32_t BSRR;			/* <!GPIO port bit set/reset register 		Address Offset = 0x0018 >*/
+	__IO    uint32_t LCKR;			/* <!GPIO port configuration lock register 	Address Offset = 0x001C >*/
+	__IO    uint32_t AFR[2];		/* <!GPIO alternate function  register 		Address Offset = 0x0020 >*/
+
+}GPIO_TypeDef_t;
+
+typedef struct{
+
+	__IO uint32_t RCC_CR;				/* <!RCC clock control register 					Address Offset = 0x0000 >*/
+	__IO uint32_t RCC_PLLCFGR;			/* <!RCC PLL configuration register 				Address Offset = 0x0004 >*/
+	__IO uint32_t RCC_CFGR;				/* <!RCC clock configuration register 				Address Offset = 0x0008 >*/
+	__IO uint32_t RCC_CIR;				/* <!RCC clock interrupt register 					Address Offset = 0x000C >*/
+	__IO uint32_t RCC_AHB1RSTR;			/* <!RCC AHB1 peripheral reset register 			Address Offset = 0x0010	>*/
+	__IO uint32_t RCC_AHB2RSTR;			/* <!RCC AHB2 peripheral reset register 			Address Offset = 0x0014 >*/
+	__IO uint32_t RCC_AHB3RSTR;			/* <!RCC AHB3 peripheral reset register 			Address Offset = 0x0018 >*/
+	__IO uint32_t Reserved0;			/* <!Reserved  register 							Address Offset = 0x001C >*/
+	__IO uint32_t RCC_APB1RSTR;			/* <!RCC APB1 peripheral reset register 			Address Offset = 0x0020 >*/
+	__IO uint32_t RCC_APB2RSTR;			/* <!RCC APB2 peripheral reset register 			Address Offset = 0x0024 >*/
+	__IO uint32_t Reserved1;			/* <!Reserved1  register 							Address Offset = 0x0028 >*/
+	__IO uint32_t Reserved2;			/* <!Reserved2  register 							Address Offset = 0x002C >*/
+	__IO uint32_t RCC_AHB1ENR;			/* <!RCC AHB1 peripheral clock register 			Address Offset = 0x0030 >*/
+	__IO uint32_t RCC_AHB2ENR;			/* <!RCC AHB2 peripheral clock enable register 		Address Offset = 0x0034 >*/
+	__IO uint32_t RCC_AHB3ENR;			/* <!RCC AHB3 peripheral clock enable register 		Address Offset = 0x0038 >*/
+	__IO uint32_t Reserved3;			/* <!Reserved3  register 							Address Offset = 0x003C >*/
+	__IO uint32_t RCC_APB1ENR;			/* <!RCC APB1 peripheral clock enable register 		Address Offset = 0x0040 >*/
+	__IO uint32_t RCC_APB2ENR;			/* <!RCC APB2 peripheral clock enable register 		Address Offset = 0x0044 >*/
+	__IO uint32_t Reserved4;			/* <!Reserved4  register			 				Address Offset = 0x0048 >*/
+	__IO uint32_t Reserved5;			/* <!Reserved5  register 							Address Offset = 0x004C >*/
+	__IO uint32_t RCC_AHB1LPENR;		/* <!RCC AHB1 peripheral clock enable in low-power mode register 	Address Offset = 0x0050 >*/
+	__IO uint32_t RCC_AHB2LPENR;		/* <!RCC AHB1 peripheral clock enable in low-power mode register 	Address Offset = 0x0054 >*/
+	__IO uint32_t RCC_AHB3LPENR;		/* <!RCC AHB2 peripheral clock enable in low-power mode register 	Address Offset = 0x0058 >*/
+	__IO uint32_t Reserved6;			/* <!Reserved5  register 							Address Offset = 0x005C >*/
+	__IO uint32_t RCC_APB1LPENR;		/* <!RCC APB1 peripheral clock enable in low-power mode register 	Address Offset = 0x0060 >*/
+	__IO uint32_t RCC_APB2LPENR;		/* <!RCC APB2 peripheral clock enable in low-power mode register 	Address Offset = 0x0064 >*/
+	__IO uint32_t Reserved7;			/* <!Reserved7  register 							Address Offset = 0x0068 >*/
+	__IO uint32_t Reserved8;			/* <!Reserved8  register 							Address Offset = 0x006C >*/
+	__IO uint32_t RCC_BDCR;				/* <!RCC backup domain control register 			Address Offset = 0x0070 >*/
+	__IO uint32_t RCC_CSR;				/* <!RCC clock control & status register 			Address Offset = 0x0074 >*/
+	__IO uint32_t Reserved9;			/* <!Reserved9  register 							Address Offset = 0x0078 >*/
+	__IO uint32_t Reserved10;			/* <!Reserved10  register 							Address Offset = 0x007C >*/
+	__IO uint32_t RCC_SSCGR;			/* <!RCC spread spectrum clock generation register 	Address Offset = 0x0080 >*/
+	__IO uint32_t RCC_PLLI2SCFGR;		/* <!RCC PLLI2S configuration register 				Address Offset = 0x0084 >*/
+	__IO uint32_t RCC_PLLSAICFGR;		/* <!RCC PLLSAI configuration register 				Address Offset = 0x0088 >*/
+	__IO uint32_t RCC_DCKCFGR1;			/* <!RCC dedicated clocks configuration register 	Address Offset = 0x008C >*/
+	__IO uint32_t RCC_DCKCFGR2;			/* <!RCC dedicated clocks configuration register 	Address Offset = 0x0090 >*/
+
+}RCC_TypeDef_t;
+
+#define GPIOA			( (GPIO_TypeDef_t *)(GPIOA_BASE_ADDR) )
+#define GPIOB           ( (GPIO_TypeDef_t *)(GPIOB_BASE_ADDR) )
+#define GPIOC           ( (GPIO_TypeDef_t *)(GPIOC_BASE_ADDR) )
+#define GPIOD           ( (GPIO_TypeDef_t *)(GPIOD_BASE_ADDR) )
+#define GPIOE           ( (GPIO_TypeDef_t *)(GPIOE_BASE_ADDR) )
+
+#define RCC				( (RCC_TypeDef_t *)(RCC_BASE_ADDR)    )
 
 #endif /* INC_STM32F767XX_H_ */
