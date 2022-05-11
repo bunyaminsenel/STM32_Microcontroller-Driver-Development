@@ -150,13 +150,25 @@ typedef struct{
 
 }RCC_TypeDef_t;
 
-#define GPIOA			( (GPIO_TypeDef_t *)(GPIOA_BASE_ADDR) )
-#define GPIOB           ( (GPIO_TypeDef_t *)(GPIOB_BASE_ADDR) )
-#define GPIOC           ( (GPIO_TypeDef_t *)(GPIOC_BASE_ADDR) )
-#define GPIOD           ( (GPIO_TypeDef_t *)(GPIOD_BASE_ADDR) )
-#define GPIOE           ( (GPIO_TypeDef_t *)(GPIOE_BASE_ADDR) )
+typedef struct{
+	__IO uint32_t MEMRMP;				/* <! SYSCFG memory remap register 						Address Offset = 0x0000 */
+	__IO uint32_t PMC;					/* <! SYSCFG peripheral mode configuration register 	Address Offset = 0x0004 */
+	__IO uint32_t EXTICR[4];			/* <! SYSCFG external interrupt configuration registers Address Offset = 0x0008 */
+	__IO uint32_t CBR;					/* <! Class B register									Address Offset = 0x001C */
+	__IO uint32_t CMPCR;				/* <! Compensation cell control register				Address Offset = 0x0020 */
 
-#define RCC				( (RCC_TypeDef_t *)(RCC_BASE_ADDR)    )
+
+}SYSCFG_TypeDef_t;
+
+#define GPIOA			( (GPIO_TypeDef_t* )(GPIOA_BASE_ADDR) )
+#define GPIOB           ( (GPIO_TypeDef_t* )(GPIOB_BASE_ADDR) )
+#define GPIOC           ( (GPIO_TypeDef_t* )(GPIOC_BASE_ADDR) )
+#define GPIOD           ( (GPIO_TypeDef_t* )(GPIOD_BASE_ADDR) )
+#define GPIOE           ( (GPIO_TypeDef_t* )(GPIOE_BASE_ADDR) )
+
+#define RCC				( (RCC_TypeDef_t *)(RCC_BASE_ADDR))
+
+#define SYSCFG			( (SYSCFG_BASE_ADRR*)(SYSCFG_BASE_ADRR) )
 
 /*
  * BIT Definitions

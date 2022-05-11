@@ -17,19 +17,34 @@
  */
 
 #include "stm32f767xx.h"
+#include "GPIO.h"
+
+static void GPIO_LedConfig();
 
 int main(void)
 {
-	RCC_GPIOA_CLK_ENABLE();
-	RCC_GPIOB_CLK_ENABLE();
-	RCC_GPIOC_CLK_ENABLE();
-	RCC_GPIOD_CLK_ENABLE();
-	RCC_GPIOE_CLK_ENABLE();
+	GPIO_LedConfig();
 
-	RCC_GPIOA_CLK_DISABLE();
-	RCC_GPIOB_CLK_DISABLE();
-	RCC_GPIOC_CLK_DISABLE();
-	RCC_GPIOD_CLK_DISABLE();
-	RCC_GPIOE_CLK_DISABLE();
+	//GPIO_WritePin(GPIOB,GPIO_PIN_0 | GPIO_PIN_7 | GPIO_PIN_14, GPIO_PIN_SET);
+
+	GPIO_Toggle(GPIOB, GPIO_PIN_14);
+
+
 	for(;;);
 }
+
+static void GPIO_LedConfig(){
+
+	RCC_GPIOB_CLK_ENABLE();
+
+	GPIO_InitTypeDef_t GPIO_Led = {0};
+	GPIO_Led.pinNumber = GPIO_PIN_0 | GPIO_PIN_7 | GPIO_PIN_14;
+	GPIO_Led.Mode = GPIO_MODE_OUTPUT;
+	GPIO_Led.Speed = SPEED_LOW;
+	GPIO_Led.Otype = OTYPE_PP;
+	GPIO_Led.PuPd = PUPD_NOPULL;
+
+	GPIO_Init(GPIOB, &GPIO_Led);
+
+}
+
